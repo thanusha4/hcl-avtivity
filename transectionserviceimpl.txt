@@ -1,0 +1,35 @@
+package com.ass.bank.service;
+
+import java.util.Date;
+
+@service
+public class TransectionServiceImp1 implements Transectionservice
+{
+@AutoWired
+private TransectionDAO transectionDAO;
+
+public List<TransectionDetails> getLastFiveTransections() {
+ return transectionDAO.getLastFiveTransections();
+}
+public Account getBalance(Long userID) {
+ return transectionDAO.getBalance(userID);
+}
+public Account getAccountDetails(Long accountNo) {
+ return transectionDAO.getAccountDetails(accountNo);
+}
+public void updateAccountBalance(TransferTo tranferTo)
+{
+TransectionDetails transectionDetails = new TransectionDetails();
+Account accountDetails=transectionDAO.getAccountDetails(tranferTo.getfromAccount());
+Long remBalance = accountDetails.getBalance()-tranferTo.getAmmount();
+accountDetails.setBalance(remBalance)'
+transectionDAO.updateAccountBalance(accountDetails);
+transectionDetails.SetAccountNo(accountDetails.getAccountNumber());
+transectionDetails.setCredit(0L);
+transectionDetails.setDebit(tranferTo.getAmmount());
+transectionDetails.setEndgAmount(tranferTo.getAmmount());
+transectionDetails.setTransectionDate(new Date());
+transectionDetails.setTransectionDescription("Funds Transfer");
+transectionDetails.setSno(3);
+transectionDAO.updateTransectionDetails(transectionDetails);
+}

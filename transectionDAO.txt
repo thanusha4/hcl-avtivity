@@ -1,0 +1,19 @@
+package com.ass.bank.dao;
+
+import java.util.list;
+
+public interface TransectionDAO 
+
+{
+
+public list<TrasectionDetails> getlastFiveTransections();
+
+public Account getbalance(long userid);
+
+public Account getaccountdetails(long accountno);
+
+public void updateAccountBalance(Account account);
+
+public void updateTransectionDetails(TransectionDetails transectionDetails);
+
+}

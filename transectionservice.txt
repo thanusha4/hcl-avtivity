@@ -1,0 +1,14 @@
+package com.ass.bank.service;
+
+import java.util.list;
+ 
+public interface TransectionService {
+
+public List<TransactionDetails> getLastFiveTransactions();
+
+public Account getBalance(Long userID);
+
+public Account getAccountDetails(Long accountNo);
+
+public void updateAccountBalance(TransferTo transferTo);
+}

@@ -1,0 +1,31 @@
+package com.ass.bank.controller;
+
+@import.java.util.list;
+public class transectioncontroller{
+
+	@autowired
+	private transectionservice transectionservice;
+	
+	@requestmapping(value = "/trans", method = requestmethod.GET)
+	public string showpaget(model model){
+	     list<transectiondetails> list = transection service.getlastfivetransections();
+
+	     Account account = transectionservice.getbalance(1234L);
+	     model.addattribute("userbalance",account.getbalance());
+	     model.addattribute("transectiondata",list);
+	     return "transection";
+	}
+	
+	@requestmapping(value = "/funds",method = requestmethod.GET)
+	public string forwardpage(Model model){
+	     Account account = transectionservice.getBalance(1234L);
+	     model.addattribute("userAccountno",account.getAccountNumber());
+	     return "funds";
+	}
+
+	@RequestMapping(value = "/save",method = RequestedMethod.POST)
+	public string transferAmount(@modelAttribute transfer to transferto){
+	    transectionservice.updateAccount balance(transferTo);
+	      return "redirect;" "/trans",
+	}
+}

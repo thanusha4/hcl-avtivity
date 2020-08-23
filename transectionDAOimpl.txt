@@ -1,0 +1,33 @@
+package com.ass.bank.dao;
+
+import java.util.List;
+
+@Repository
+@Transactional
+public class TransectionDAOImpl implements TransectionDAO{
+@Autowired 
+private sessionFactory sessionFactory;
+
+public List<TransectionDetails> getLastFiveTransections() {
+@SuppressWarnings("unchecked")
+List<TransectionDetails> transectionList=(List<TransectionDetails>)sessionFactory.getCurrentSession()
+.createCriteria(TransectionDetils.class).addOrder(Order.desc("transectionDATE")).SetMaxresults().list();
+return transectionList;
+}
+public Account getBalance(Long userID) {
+Account account =(Account) sessionFactory.getCurrentSession().createCriteria(Account.class).
+add(Restrictions.eq("user ID",user ID)).uniqueResult();
+return account;
+}
+public Account getAccountDetails(Long accountNo) {
+Account account =(Account) sessionFactory.getCurrentSession().createCriteria(Account.class).
+add(Restrictions.eq("accountNumber",accountNo)).uniqueResult();
+return account;
+}
+
+public void updateAccountBalance(Account Account) {
+sessionFactory.getCurrentSession().update(account);
+}
+public void updateTransectionDetails(TransectionDetails transectionDetails) {
+sessionFactory.getCurrentSession().save(transectionDetails);
+}
